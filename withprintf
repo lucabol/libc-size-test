@@ -1,0 +1,28 @@
+    8864     24 helloasm
+   10504     24 hellofslc
+   13824     32 hello
+   15384     32 hellolast
+   20656     48 hellodiet
+   27784     56 hellomusl
+   88696    176 helloziggcc
+   88696    176 hellozigmusl
+  900240   1760 hellogcc
+
+      text       data        bss      total filename
+        34         14          0         48 helloasm
+      5796       1444          0       7240 hellolast
+      2848        628         64       3540 hellofslc
+      6161       1904         84       8149 hellodiet
+     10803       3496       1680      15979 hellomusl
+      2066       2249      12576      16891 hellozigmusl
+      2066       2249      12576      16891 helloziggcc
+    615792     188935      23016     827743 hellogcc
+
+hello helloasm Hello, world!
+hellodiet hello 1
+hellofslc hello 1
+hellogcc hello 1
+hellolast hello 1
+hellomusl hello 1
+helloziggcc hello 1
+hellozigmusl hello 1

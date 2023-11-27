@@ -67,7 +67,7 @@ LASTS_FDEF ssize_t lasts_write(LASTS_FD fd, const void *buf, size_t count);
 // My functions
 LASTS_FDEF void lasts_exitif(bool condition, int code, char *message);
 
-inline void putchar_(char ch) {
+static inline void putchar_(char ch) {
   lasts_write(LASTS_STDOUT, &ch, 1);
 } 
 
@@ -104,6 +104,7 @@ inline void putchar_(char ch) {
 #  define open_readwrite lasts_open_readwrite
 #  define open_append lasts_open_append
 #  define open_trunc lasts_open_trunc
+#  define puts lasts_puts
 
 #define STDIN    LASTS_STDIN
 #define STDOUT   LASTS_STDOUT
@@ -862,6 +863,14 @@ LASTS_FD lasts_open_append(const char* file) {
 LASTS_FDEF __attribute__((unused))
 LASTS_FD lasts_open_trunc(const char* file) {
     return lasts_open(file, O_WRONLY | O_TRUNC | O_CREAT, 0644);
+}
+
+
+LASTS_FDEF __attribute__((unused))
+int puts(const char* string) {
+    int len = lasts_write(LASTS_STDOUT, string, lasts_strlen(string));
+    int len1 = lasts_write(LASTS_STDOUT, "\n", 1);
+    return len + len1;
 }
 #else
 // WINDOWS PREAMBLE {{{1

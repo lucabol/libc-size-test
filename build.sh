@@ -1,4 +1,5 @@
-gcc -static -Os hello_last.c -o hellolast -ffreestanding -nostdlib
+gcc -static -Os -DLAST hello.c -o hellolast -ffreestanding -nostdlib
+gcc -static -Os  -ffreestanding -nostdlib -I/opt/fslibc/include -L/opt/fslibc/lib -o hellofslc fsl-init.c hello.c -lfslc
 
 diet gcc -static -Os hello.c -o hellodiet 2> /dev/null
 musl-gcc -static -Os hello.c -o hellomusl
@@ -11,10 +12,10 @@ nasm -f elf64 -o helloasm.o hello.s
 ld -o helloasm helloasm.o
 trash helloasm.o
 
-exa -lBhS --no-time --no-user -s size | grep rwxrwx | sed -e 's/.rwxrwxr-x//g'
+exa -lBhS --no-time --no-user -s size | grep rwxrwx | sed -e 's/\.rwxrwxr-x//g'
 
 echo
-size -G helloasm hellolast hellodiet hellomusl hellozigmusl helloziggcc hellogcc 
+size -G helloasm hellolast hellofslc hellodiet hellomusl hellozigmusl helloziggcc hellogcc 
 
 echo
 
