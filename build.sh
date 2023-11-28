@@ -1,5 +1,5 @@
 gcc -static -Os -DLAST hello.c -o hellolast -ffreestanding -nostdlib
-gcc -static -Os  -ffreestanding -nostdlib -I/opt/fslibc/include -L/opt/fslibc/lib -o hellofslc fsl-init.c hello.c -lfslc
+gcc -static -Os  -ffreestanding -nostdlib -I./fslibc/include -L./fslibc -o hellofslc fsl-init.c hello.c -lfslc
 
 diet gcc -static -Os hello.c -o hellodiet 2> /dev/null
 musl-gcc -static -Os hello.c -o hellomusl
